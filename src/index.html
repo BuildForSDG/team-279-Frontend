@@ -6,11 +6,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="./index.css" />
 
-    <title>Document</title>
+    <title>vTender</title>
 </head>
 <body>
 
     <h2 data-app-name></h2>
+    <!-- As a link -->
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand right" href="/">Home</a>
+    </nav>
 <div id="container">
     <section>
       <div id="header" class="header jumbotron jumbotron-fluid">
@@ -29,12 +33,12 @@
           </div>
           <div><img src="./images/verify.png" class="image-size"><br>
             <div class="col text-center">
-              <button class="btn btn-primary">View Tenders</button>
+              <button id="viewtenders" class="btn btn-primary">View Tenders</button>
             </div>
           </div>
           <div><img src="./images/verify.png" class="image-size"><br>
             <div class="col text-center">
-              <button class="btn btn-primary">Frauld Detector</button>
+              <button id="frauld-detector" class="btn btn-primary">Frauld Detector</button>
             </div>
           </div>
       </div>
@@ -42,6 +46,24 @@
 
     <section id="section2" class="olu">
       <div id="panel"></div>
+
+      <div class="hide">
+          <table id="tendertable">
+                  <colgroup>
+                      <col class="twenty" />
+                      <col class="fourty" />
+                      <col class="thirtyfive" />
+                      <col class="twentyfive" />
+                  </colgroup>
+                 <tr>
+                      <th onclick="sortTable(0)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspCategory</th>
+                      <th onclick="sortTable(1)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspTender Description</th>
+                      <th onclick="sortTable(2)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspTender No</th>
+                      <th onclick="sortTable(3)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspDate published</th>
+                      <th onclick="sortTable(4)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspClosing date & time</th>
+                  </tr>
+              </table>
+          </div>
     </section>
 
      <div id="section3" class="noloader">
@@ -63,7 +85,7 @@
               <div class="col-sm-6"><p id="department" class="card-text"></p></div>
               <div class="col-sm-6"><p id="mylist" class="card-text"></p></div>
             </div>
-          <a href="#" class="btn btn-primary">Verify another tender</a>
+          <a href="/" class="btn btn-primary">Verify another tender</a>
         </div>
       </div>
     </div>

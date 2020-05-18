@@ -163,3 +163,32 @@ li {
   text-align: center;
   height: 42px;
 }
+#tendertable {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tendertable td, #tendertable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#tendertable tr:nth-child(even){background-color: #f2f2f2;}
+
+#tendertable tr:hover {background-color: #ddd;}
+
+#tendertable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+.right {
+  position: relative;
+  left: 90%;
+}
+.bg-light {
+  background-color: #f8f9fa00!important;
+}

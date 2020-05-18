@@ -1,4 +1,5 @@
 import app from './app';
+// import Tenders from './tenders';
 import TenderService from './Services/TenderService';
 
 const verify = document.getElementById('verify');
@@ -13,6 +14,7 @@ const mylist = document.getElementById('mylist');
 const department = document.getElementById('department');
 const winner = document.getElementById('winner');
 const tenderStatusTest = document.getElementById('tenderStatus');
+const detectfrauld = document.getElementById('frauld-detector');
 
 const startApp = async () => {
   const header = document.querySelector('[data-app-name]');
@@ -26,10 +28,10 @@ function startLoaderEffect() {
   section2.style.display = 'none';
   section3.classList = 'loader';
 }
-function stopLoaderEffect() {
+const stopLoaderEffect = () => {
   section3.classList = 'noloader';
-}
-function openTender(tenderobj) {
+};
+const openTender = (tenderobj) => {
   const { id, ...rest } = tenderobj;
   startLoaderEffect();
   setTimeout(() => {
@@ -53,9 +55,8 @@ function openTender(tenderobj) {
       department.innerHTML = departmentData;
     }
   }, 400);
-}
-
-function closedTender(tenderobj) {
+};
+const closedTender = (tenderobj) => {
   const { id, ...rest } = tenderobj;
   startLoaderEffect();
   setTimeout(() => {
@@ -90,7 +91,7 @@ function closedTender(tenderobj) {
       winner.innerHTML = winnerText;
     }
   }, 400);
-}
+};
 function checkTenderStatus(tenderobj) {
   const { id, ...rest } = tenderobj;
   if (rest.tenderStatus === 'Valid') {
@@ -108,7 +109,6 @@ const verifyTenderNumber = () => {
   setTimeout(() => {
     section3.classList = 'noloader';
     section2.style.display = 'inline';
-
     section2.innerHTML += "<center class='textinput'><b>Enter Tender Reference Number</b> <br> <input type='text' id='textid' name='subdomain' required = 'required' /></center>";
     section3.classList = 'olu';
     const validateTender = document.createElement('button');
@@ -117,7 +117,8 @@ const verifyTenderNumber = () => {
     validateTender.id = 'validateTender';
     validateTender.className = 'mybtn btn btn-primary';
     validateTender.onclick = (() => {
-      if (document.getElementById('textid').value !== '') {
+      const inputText = document.getElementById('textid').value;
+      if ((inputText !== '') && !(inputText.length < 6)) {
         const inputValue = document.getElementById('textid').value;
         startLoaderEffect();
         validateTender.style.display = 'none';
@@ -126,11 +127,49 @@ const verifyTenderNumber = () => {
           checkTenderStatus(response);
         });
       } else {
-        alert('Tender number field cannot be empty');
+        // eslint-disable-next-line no-alert
+        alert('Six Or More Characters Expected');
       }
     });
     document.body.appendChild(validateTender);
   }, 3000);
 };
+
+function listTenders() {
+  startLoaderEffect();
+  setTimeout(() => {
+    document.querySelector('.hide').style.display = 'inline';
+    section3.classList = 'noloader';
+    section2.style.display = 'inline';
+    headerText.style.display = 'none';
+    TenderService.ListTender().then((res) => {
+      const table = document.getElementById('tendertable');
+      res.forEach((object) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${object.category}</td>`
+                + `<td>${object.tenderDescription}</td>`
+                + `<td>${object.tenderNumber}</td>`
+                + `<td>${object.datePublished}</td>`
+                + `<td>${object.closingDate}</td>`;
+        table.appendChild(tr);
+      });
+    });
+  }, 3000);
+}
+function detectFrauld() {
+  TenderService.getmytender().then((res) => {
+    console.log('My response is: ', res);
+  });
+}
+const el = document.getElementById('viewtenders');
+if (el) {
+  el.addEventListener('click', listTenders, false);
+}
+if (verify) {
+  verify.addEventListener('click', verifyTenderNumber, false);
+}
+if (detectfrauld) {
+  detectfrauld.addEventListener('click', detectFrauld, false);
+}
+
 document.addEventListener('DOMContentLoaded', startApp);
-verify.addEventListener('click', verifyTenderNumber);
