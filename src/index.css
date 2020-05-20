@@ -31,6 +31,141 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   margin: -28px;
 }
 
+
+/* MY ACCOUNT */
+
+/*
+form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+  text-align: center;
+} */
+
+#nav_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+* {box-sizing: border-box}
+
+#signupForm, #signinForm {
+
+  border-radius: 2%;
+  background: floralwhite;
+  /* background: lavender; */
+  box-shadow: aliceblue;
+  /* border-bottom-color: #000; */
+  border-style: initial;
+
+  display: flex;
+  flex-direction: column;
+
+  -ms-flex-item-align: center;
+  justify-items: center;
+  align-items: center;
+  margin: 0 auto;
+  width:32%;
+  text-align: center;
+
+}
+
+#register, #login{
+  font-size: 32px;
+  color: #512fad;
+  margin-top: auto;
+  margin-bottom: 8px;
+}
+
+#terms {
+  margin-top: -6px;
+}
+
+#chk{
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+
+#switchSignin input[type=text], input[type=tel], input[type=password], input[type=email] {
+  width: 90%;
+  height: 38px;
+  padding: 10px 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border-style: hidden;
+  border-bottom-style: ridge;
+  border-radius: 3px;
+  border-bottom-color: #512fad !important;
+  background: none !important;
+
+}
+
+#switchSignup input[type=text], input[type=tel], input[type=password], input[type=email] {
+  width: 90%;
+  height: 38px;
+  padding: 10px 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border-style: hidden;
+  border-bottom-style: ridge;
+  border-radius: 3px;
+  border-bottom-color: #512fad !important;
+  background: none !important;
+}
+
+/* hide try */
+
+.hide {
+  display: none !important;
+}
+
+#btn-signup, #btn-signin {
+
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  width: 90% !important;
+  position: relative;
+  /* height: 32px; */
+  text-align: center;
+  text-justify: middle;
+  vertical-align: middle;
+
+}
+
+#switchSignup {
+  display: none;
+}
+
+#BuildForSDG{
+  font-size: 32px;
+  font-weight: 600;
+}
+
+#btn-signup:hover, #btn-signin-:hover {
+
+    color: #fff;
+    background-color: #512fad;
+    border-color: #0062cc;
+
+}
+#container {
+   padding: 5px;
+ }
+
+#already, #notYet {
+  margin-top: 10px;
+  /* margin-bottom: auto; */
+}
+
+/* MY ACCOUNT */
+
+
 .flex{
   display: flex;
  flex-wrap: wrap;
