@@ -1,49 +1,79 @@
 {
-  "name": "js-starter",
-  "version": "0.0.1",
-  "description": "A boilerplate for starting js code",
-  "keywords": [
-    "js-starter",
-    "boilerplate"
-  ],
-  "private": false,
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "directories": {
-    "test": "__tests__"
-  },
+  "name": "v-tender",
+  "version": "0.0.0",
   "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "test:cover": "jest --coverage",
-    "lint": "eslint \"src/**/*.js\"",
-    "start": "parcel ./src/index.html"
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "test:watch": "jest --watch"
   },
-  "author": {
-    "name": "Build For SDG",
-    "email": "buildforsdg@andela.com"
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~9.1.9",
+    "@angular/common": "~9.1.9",
+    "@angular/compiler": "~9.1.9",
+    "@angular/core": "~9.1.9",
+    "@angular/forms": "~9.1.9",
+    "@angular/platform-browser": "~9.1.9",
+    "@angular/platform-browser-dynamic": "~9.1.9",
+    "@angular/router": "~9.1.9",
+    "@briebug/jest-schematic": "^2.1.1",
+    "@ng-bootstrap/ng-bootstrap": "^6.0.0",
+    "@types/googlemaps": "^3.39.6",
+    "bootstrap": "^4.5.0",
+    "rxjs": "~6.5.4",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
   },
-  "homepage": "https://github.com/BuildForSDG/js-starter#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/BuildForSDG/js-starter.git"
-  },
-  "bugs": {
-    "url": "https://github.com/BuildForSDG/js-starter/issues"
-  },
-  "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
-    "babel-jest": "^25.4.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.2",
-    "jest": "^25.4.0",
-    "parcel-bundler": "^1.12.4"
+    "@angular-devkit/build-angular": "~0.901.7",
+    "@angular/cli": "~9.1.7",
+    "@angular/compiler-cli": "~9.1.9",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^12.11.1",
+    "codelyzer": "^5.1.2",
+    "jasmine-core": "~3.5.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "jest": "^26.0.1",
+    "jest-preset-angular": "^8.2.0",
+    "protractor": "~7.0.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~3.8.3"
   },
-  "browserslist": [
-    "last 1 Chrome versions"
-  ]
+  "jest": {
+    "preset": "jest-preset-angular",
+    "roots": [
+      "src"
+    ],
+    "transform": {
+      "^.+\\.(ts|js|html)$": "ts-jest"
+    },
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setup-jest.ts"
+    ],
+    "moduleNameMapper": {
+      "@app/(.*)": "<rootDir>/src/app/$1",
+      "@assets/(.*)": "<rootDir>/src/assets/$1",
+      "@core/(.*)": "<rootDir>/src/app/core/$1",
+      "@env": "<rootDir>/src/environments/environment",
+      "@src/(.*)": "<rootDir>/src/src/$1",
+      "@state/(.*)": "<rootDir>/src/app/state/$1"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "<rootDir>/tsconfig.spec.json",
+        "stringifyContentPathRegex": "\\.html$",
+        "astTransformers": [
+          "jest-preset-angular/build/InlineFilesTransformer",
+          "jest-preset-angular/build/StripStylesTransformer"
+        ]
+      }
+    }
+  }
 }

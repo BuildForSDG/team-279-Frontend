@@ -1,0 +1,47 @@
+.text-primary-new {
+   background-color: #512fad;
+   opacity: 0.8;
+
+}
+
+span.olutext {
+  font-size: 20px;
+  font-weight: 500;
+  text-shadow: bisque;
+}
+.mb-4, .my-4 {
+  margin-bottom: -0.1rem!important;
+}
+.card {
+  max-width: 84%;
+}
+.col {
+  padding-left: 0px;
+  padding-bottom: 0px;
+}
+.pointawared {
+  background-color: #36b9cc;
+  border: 1px solid #f4f4f4;
+
+  color: #ffffff
+}
+.status {
+  background-color: #1cc88a;
+  color: #ffffff
+
+}
+
+.tendernumb {
+  background-color: #4e73df;
+  color: #ffffff
+}
+.institution {
+  background-color: #512fad;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 500;
+}
+.row {
+  margin-right: -10px;
+  margin-left: 2px;
+}
