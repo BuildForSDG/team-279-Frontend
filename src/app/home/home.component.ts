@@ -34,24 +34,24 @@ export class HomeComponent implements OnInit {
   }
 
   veryfyTender = () => {
-    this.tenderService.getTenders(this.tenderNumber).subscribe((resp) => {
-       this.datas = resp;
-       this.tenderNumber = this.datas.tenderNumber;
-       this.tenderDescription = this.datas.tenderDescription;
-       this.category = this.datas.category;
-       this.datePublished = this.datas.datePublished;
-       this.closingDate = this.datas.closingDate;
-       this.tenderStatus = this.datas.tenderStatus;
+    // this.tenderService.getTenders().subscribe((resp) => {
+    //    this.datas = resp;
+    //    this.tenderNumber = this.datas.tenderNumber;
+    //    this.tenderDescription = this.datas.tenderDescription;
+    //    this.category = this.datas.category;
+    //    this.datePublished = this.datas.datePublished;
+    //    this.closingDate = this.datas.closingDate;
+    //    this.tenderStatus = this.datas.tenderStatus;
 
-       this.nameOfInstitution = this.datas.nameOfInstitution;
-       this.officalLocation = this.datas.officalLocation;
-       this.InstitutionContactPerson = this.datas.InstitutionContactPerson;
-       this.InstitutionPersonEmail = this.datas.InstitutionPersonEmail;
-       this.InstitutionPersonPhone = this.datas.InstitutionPersonPhone;
-       this.isValidTender = true;
-       this.showForm = false;
-       this.isTender = false;
-    });
+    //    this.nameOfInstitution = this.datas.nameOfInstitution;
+    //    this.officalLocation = this.datas.officalLocation;
+    //    this.InstitutionContactPerson = this.datas.InstitutionContactPerson;
+    //    this.InstitutionPersonEmail = this.datas.InstitutionPersonEmail;
+    //    this.InstitutionPersonPhone = this.datas.InstitutionPersonPhone;
+    //    this.isValidTender = true;
+    //    this.showForm = false;
+    //    this.isTender = false;
+    // });
   }
 
   // checkTenderStatus(tenderobj) {

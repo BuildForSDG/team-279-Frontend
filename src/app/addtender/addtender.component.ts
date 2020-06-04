@@ -11,52 +11,60 @@ import { Observable } from 'rxjs';
   styleUrls: ['./addtender.component.css']
 })
 export class AddtenderComponent implements OnInit {
-  // tenders: Tender[] = [];
-    tenderNumbers: any;
-    tenderDescriptions: any;
-    categorys: any;
-    tenderStatuss: any;
-    InstitutionContactPersons: any;
-    InstitutionPersonEmails: any;
-    InstitutionPersonPhones: any;
-    datePublisheds: any;
-    closingDates: any;
-
+  tenders: Tender[];
+  tenderAdded = false;
+  tenderToEdit: {
+    tenderNumber: '',
+    tenderDescription: '',
+    category: '',
+    tenderStatus: '',
+    InstitutionContactPerson: '',
+    InstitutionPersonEmail: '',
+    InstitutionPersonPhone: '',
+    datePublished: '',
+    closingDate: ''
+   };
   constructor(private tenderService: TenderService) {
-    this.tenderNumbers = '';
-    this.tenderDescriptions = '';
-    this.categorys = '';
-    this.tenderStatuss = '';
-    this.InstitutionContactPersons = '';
-    this.InstitutionPersonEmails = '';
-    this.InstitutionPersonPhones = '';
-    this.datePublisheds = '';
-    this.closingDates = '';
 
-    this.tenderService.getCompany();
    }
-  ngOnInit(): void {
-
+  ngOnInit(){
+    this.getAllTenders();
   }
-
+  getAllTenders() {
+    this.tenderService.getTenders().subscribe(tenderData => {
+      this.tenders = tenderData;
+      console.log(this.tenders);
+    });
+  }
    // Add New user
-   createTender(data) {
-          this.tenderNumbers = data.tenderNumber;
-          this.tenderDescriptions = data.tenderDescription;
-          this.categorys = data.category;
-          this.tenderStatuss = data.tenderStatus;
-          this.InstitutionContactPersons = data.InstitutionContactPerson;
-          this.InstitutionPersonEmails = data.InstitutionPersonEmail;
-          this.InstitutionPersonPhones = data.InstitutionPersonPhone;
-          this.datePublisheds = data.datePublished;
-          this.closingDates = data.closingDate;
-
-    //  const newTender = JSON.stringify(data);
-    //  this.tenderService.createTender(newTender).subscribe((resp) => {
-    //    console.log('Response from post req: ',  resp);
-    // });
+   createTender(data: Tender) {
+    this.tenderService.createTender(data).subscribe(res => {
+      this.tenderAdded = true;
+      this.getAllTenders();
+      console.log('Tender has been added ', res);
+    });
   }
-
+  editTender(data){
+    this.tenderToEdit.tenderNumber = data.tenderNumber;
+  //   tenderDescription: data.tenderDescription,
+  //   category: data.category,
+  //   tenderStatus: data.tenderStatus,
+  //   InstitutionContactPerson: data.InstitutionContactPerson,
+  //   InstitutionPersonEmail: data.InstitutionPersonEmail,
+  //   InstitutionPersonPhone: data.InstitutionPersonPhone,
+  //   datePublished: data.datePublished,
+  //   closingDate: data.closingDate
+  //  };
+    console.log('ID to update ', this.tenderToEdit.tenderNumber );
+  }
+  delete(data: Tender) {
+   if (confirm('Are you sure to delete')){
+    this.tenderService.deleteTender(data).subscribe((res) => {
+      this.getAllTenders();
+      console.log(`Tender number ${data} deleted ` + res);
+    });
+   }
+}
 
   // const tender = {
   //   tenderNumber: data.tenderNumber,

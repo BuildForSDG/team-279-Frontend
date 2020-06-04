@@ -1,14 +1,14 @@
 export class Tender {
-  constructor(
-    public id: number,
-    public tenderNumber: string = 'heyee',
-    public tenderDescription: string,
-    public category: string,
-    public InstitutionContactPerson: string,
-    public InstitutionPersonEmail: string,
-    public InstitutionPersonPhone: string,
-    public awardedPoint: string,
-    public datePublished: string,
-    public closingDate: string
-  ) {  }
+     // tslint:disable-next-line: variable-name
+     _id: number;
+     tenderNumber: string;
+     tenderDescription: string;
+     category: string;
+     tenderStatus: string;
+     InstitutionContactPerson: string;
+     InstitutionPersonEmail: string;
+     InstitutionPersonPhone: string;
+     awardedPoint: number;
+     datePublished: string;
+     closingDate: string;
 }

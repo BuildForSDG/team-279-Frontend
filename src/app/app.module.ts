@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FrauldDetectorComponent } from './frauld-detector/frauld-detector.component';
+import { ViewcompaniesComponent } from './viewcompanies/viewcompanies.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FrauldDetectorComponent } from './frauld-detector/frauld-detector.compo
     AddcompanyComponent,
     AddtenderComponent,
     HomeComponent,
-    FrauldDetectorComponent
+    FrauldDetectorComponent,
+    ViewcompaniesComponent
   ],
   imports: [
     BrowserModule,
