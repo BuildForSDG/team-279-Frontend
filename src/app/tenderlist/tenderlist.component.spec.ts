@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FrauldDetectorComponent } from './frauld-detector.component';
+import { TenderlistComponent } from './tenderlist.component';
 
-describe('FrauldDetectorComponent', () => {
-  let component: FrauldDetectorComponent;
-  let fixture: ComponentFixture<FrauldDetectorComponent>;
+describe('TenderlistComponent', () => {
+  let component: TenderlistComponent;
+  let fixture: ComponentFixture<TenderlistComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FrauldDetectorComponent ]
+      declarations: [ TenderlistComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FrauldDetectorComponent);
+    fixture = TestBed.createComponent(TenderlistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,7 +4,9 @@ export class Tender {
      tenderNumber: string;
      tenderDescription: string;
      category: string;
-     tenderStatus: string;
+     tenderStatus: any;
+     nameOfInstitution: any;
+    //  options: any;
      InstitutionContactPerson: string;
      InstitutionPersonEmail: string;
      InstitutionPersonPhone: string;

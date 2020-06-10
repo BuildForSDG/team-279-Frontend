@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tender } from '../models/tender';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { TenderService } from '../services/tender.service';
 import { Observable } from 'rxjs';
 
@@ -13,19 +13,19 @@ import { Observable } from 'rxjs';
 export class AddtenderComponent implements OnInit {
   tenders: Tender[];
   tenderAdded = false;
-  tenderToEdit: {
-    tenderNumber: '',
-    tenderDescription: '',
-    category: '',
-    tenderStatus: '',
-    InstitutionContactPerson: '',
-    InstitutionPersonEmail: '',
-    InstitutionPersonPhone: '',
-    datePublished: '',
-    closingDate: ''
-   };
-  constructor(private tenderService: TenderService) {
 
+  options = [
+    { value: 'Open', label: 'Open Tender' },
+    { value: 'Awarded', label: 'Awarded Tender' },
+    { value: 'Pending', label: 'Pending' },
+  ];
+
+  tenderNumber: any; tenderDescription: any; category: any;
+  InstitutionContactPerson: any; InstitutionPersonEmail: any;
+  InstitutionPersonPhone: any; datePublished: any; closingDate: any;
+  tenderStatus: any;
+  constructor(private tenderService: TenderService, private router: Router) {
+           this.tenderStatus = this.options;
    }
   ngOnInit(){
     this.getAllTenders();
@@ -44,18 +44,25 @@ export class AddtenderComponent implements OnInit {
       console.log('Tender has been added ', res);
     });
   }
-  editTender(data){
-    this.tenderToEdit.tenderNumber = data.tenderNumber;
-  //   tenderDescription: data.tenderDescription,
-  //   category: data.category,
-  //   tenderStatus: data.tenderStatus,
-  //   InstitutionContactPerson: data.InstitutionContactPerson,
-  //   InstitutionPersonEmail: data.InstitutionPersonEmail,
-  //   InstitutionPersonPhone: data.InstitutionPersonPhone,
-  //   datePublished: data.datePublished,
-  //   closingDate: data.closingDate
-  //  };
-    console.log('ID to update ', this.tenderToEdit.tenderNumber );
+  openDetailsWithState(data){
+    const navigationExtras: NavigationExtras = {
+      state: {
+        data: {
+          tenderNumber: data.tenderNumber,
+          tenderStatus: data.tenderStatus,
+          tenderDescription: data.tenderDescription,
+          category: data.category,
+          datePublished: data.datePublished,
+          closingDate: data.closingDate,
+          nameOfInstitution: data.nameOfInstitution,
+          officalLocation: data.officalLocation,
+          InstitutionContactPerson: data.InstitutionContactPerson,
+          InstitutionPersonEmail: data.InstitutionPersonEmail,
+          InstitutionPersonPhone: data.InstitutionPersonPhone
+        }
+      }
+    };
+    this.router.navigate(['edittender'], navigationExtras);
   }
   delete(data: Tender) {
    if (confirm('Are you sure to delete')){
@@ -65,40 +72,6 @@ export class AddtenderComponent implements OnInit {
     });
    }
 }
-
-  // const tender = {
-  //   tenderNumber: data.tenderNumber,
-  //   tenderDescription: data.tenderDescription,
-  //   category: data.category,
-  //   tenderStatus: data.tenderStatus,
-  //   InstitutionContactPerson: data.InstitutionContactPerson,
-  //   InstitutionPersonEmail: data.InstitutionPersonEmail,
-  //   InstitutionPersonPhone: data.InstitutionPersonPhone,
-  //   datePublished: data.datePublished,
-  //   closingDate: data.closingDate
-  //  };
-  // deleteEmployee(id: number) {
-  //   this.tenderService.deleteTender(id)
-  //     .subscribe(
-  //       data => {
-  //         console.log(data);
-  //         this.reloadData();
-  //       },
-  //       error => console.log(error));
-  // }
-
-
-//
-//   // Post Request to Tender API
-//   console.log(olu);
-//   const xhr = new XMLHttpRequest();
-//   xhr.open('POST', 'https://vtender-api.herokuapp.com/api/v1/tenders', true);
-//   xhr.setRequestHeader('Content-type', 'application/json');
-//   xhr.send(olu);
-//   xhr.onload = (data) => {
-//     console.log('Response from server ', data);
-//   };
-// });
 
 
 }

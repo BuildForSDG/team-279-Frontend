@@ -20,20 +20,18 @@ export class ViewcompaniesComponent implements OnInit {
   getAllCompanies() {
     this.tenderService.getCompanies().subscribe(companyData => {
       this.companies = companyData;
-      console.log(this.companies);
     });
   }
   delete(data: Company) {
     if (confirm('Are you sure to delete')){
      this.tenderService.deleteCompany(data).subscribe((res) => {
        this.getAllCompanies();
-       console.log(`Company id  ${data} deleted `);
      });
     }
  }
 
  editTender(tender){
-    console.log('ok');
+
  }
 
 }

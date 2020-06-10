@@ -1,9 +1,9 @@
 <div class="container" >
-  <section *ngIf="isTender">
+  <section *ngIf="validtend">
       <div id="header" class="header jumbotron jumbotron-fluid">
-        <h1 class="display-4 hello">Tender Frauld Detector</h1>
+        <h1 class="display-4 hello">Tender Fraud Detector</h1>
 
-            <p >Over the past four years, a number of companies have lost tens of thousands of Rands due to alleged fraudulent request for quotations (RFQS). <br>
+            <p class="introtest">Over the past four years, a number of companies have lost tens of thousands of Rands due to alleged fraudulent request for quotations (RFQS). <br>
             With this software, companies or individual can verify the authenticity of Tender(RFQS), and also assist bidders to detect curuption and discripancies in awarded tender <br>
             </p>
 
@@ -18,12 +18,12 @@
           </div>
           <div><img src="../assets/verify.png" class="image-size"><br>
             <div class="col text-center">
-              <button id="viewtenders" class="btn btn-primary">View Tenders</button>
+              <button routerLink="/tenderlist" id="viewtenders" class="btn btn-primary">View Tenders</button>
             </div>
           </div>
-          <div><img src="../assets/verify.png" class="image-size"><br>
+          <div ><img src="../assets/download.png" class="resize"><br>
             <div class="col text-center">
-              <a routerLink="/addcompany" class="btn btn-primary">Frauld Detector</a>
+              <a href="http://www.olumide.co.za/vtender/vtender.apk" class="btn btn-primary" download>Download App</a>
             </div>
           </div>
         </div>
@@ -52,11 +52,12 @@
     </section>
 
      <div class="container text-center" *ngIf="showForm">
+      <label *ngIf="ifEmpty"  class="empty" >{{errorMsg}}</label>
             <div >
-              <label for="tendernumber" >
+              <label for="inputTenderNumber" >
                 <b class="size">Enter Tender Number</b>
               </label><br>
-              <input type="text" [(ngModel)]="tenderNumber">
+              <input type="text" name="inputTenderNumber" [(ngModel)]="inputTenderNumber">
             </div>
            <div>
             <button class="btn btn-primary secondbtn" (click)="veryfyTender()" >Verify Tender</button>
@@ -98,17 +99,30 @@
 
       </div>
 
-      <a routerLink="/home" class="btn btn-primary">Check Another Tender</a>
+      <a (click)="reloadPage()" class="btn btn-primary">Check Another Tender</a>
     </div>
   </div>
   <div class="clearfix"></div>
-  <app-frauld-detector></app-frauld-detector>
-  <!-- Footer -->
-  <footer class="page-footer font-small blue">
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-      <a href="https://mdbootstrap.com/"> Team-279</a>
+
+
+  <div *ngIf="inValidTender">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body danger">
+      <h5 class="card-title">ALERT!!!</h5>
+      <h6 class="card-subtitle mb-2 olu">Are you sure the tender number is correct?</h6>
+      <p class="card-text">WE DO NOT HAVE A RECORD OF TENDER NUMBER  {{ tenderNumber }}</p>
+      <a (click)="reloadPage()" class="btn btn-primary">Check Another Tender</a>
     </div>
-    <!-- Copyright -->
-  </footer>
-  <!-- Footer -->
+  </div>
+  </div>
+<!-- Spinner -->
+
+<div class="d-flex justify-content-center" *ngIf="spinner">
+  <div class="spinner-grow" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<!-- Footer -->
+  <div class="footer introtest">
+    <p >Team-279 | inspired by Andela & Facebook</p>
+  </div>

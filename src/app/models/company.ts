@@ -1,6 +1,6 @@
 export class Company {
   _id: number;
-  isWinner: boolean;
+  isWinner: any;
   tenderNumber: string;
   companyName: string;
   companyRegistrationNo: string;

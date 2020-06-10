@@ -1,3 +1,5 @@
+<p> Welcome <b>Username</b> <a routerLink="/addtender">TENDER PORTAL</a> </p>
+
 <div class="container">
   <div class="row">
      <div class="col md-12">
@@ -34,7 +36,7 @@
               <td>{{company.isWinner}} </td>
 
               <td>
-                <a class="btn btn-warning btn-xs" (click)="editTender(company._id)" data-toggle="modal" data-target="#modaledit">Edit</a>
+                <a  class="btn btn-warning btn-xs" routerLink="/editcompany" [state]="{ data: company._id }" >Update</a>
                 <a class="btn btn-danger btn-xs" (click)="delete(company._id)">Delete</a>
               </td>
            <!-- </tr> -->

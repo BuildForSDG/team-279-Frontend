@@ -242,3 +242,17 @@ b.size {
 .card-opacity {
   opacity: 0.6;
 }
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 0px;
+  margin: -17px;
+  width: 100%;
+  background-color: #512fad;
+  color: white !important;
+  text-align: center;
+  font-weight: bold;
+  font-size: 17px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

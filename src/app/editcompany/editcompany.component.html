@@ -1,46 +1,50 @@
-<p> Welcome <b>Username</b> <a routerLink="/addtender">Go to Add Tender Page</a> </p>
+<p>editcompany works!</p>
 <div class="jumbotron w-50 p-3">
-  <form #companyForm="ngForm" (ngSubmit)="createCompany(companyForm.value)">
+  <form #companyForm="ngForm" (ngSubmit)="updateCompany(companyForm.value)">
     <div class="row">
       <div class="col">
         <label><b>Tender Number You are Applying To</b></label>
-        <input type="text" name="tenderNumber" class="form-control" placeholder="Tender Number" ngModel required>
+        <input type="text" [(ngModel)]="tenderNumber" name="tenderNumber" class="form-control"   required>
       </div>
       <div class="col">
         <label><b>Update awarded point if available</b></label>
-        <input type="text" name="awardedPoint" class="form-control" placeholder="0.00" ngModel>
+        <input type="text" [(ngModel)]="awardedPoint" name="awardedPoint" class="form-control" >
       </div>
     </div>
     <div class="row"> <label><b>Update Company Informations</b></label></div>
     <div class="row">
       <div class="col">
-        <input type="text" name="companyName" class="form-control" placeholder="Company Name" ngModel required>
+        <input type="text" [(ngModel)]="companyName" name="companyName" class="form-control" required>
       </div>
       <div class="col">
-        <input type="text" name="companyRegistrationNo"  class="form-control" placeholder="Registration Number" ngModel required>
+        <input type="text" [(ngModel)]="companyRegistrationNo" name="companyRegistrationNo"  class="form-control"  required>
       </div>
       <div class="col">
-        <input type="number" name="companyPhoneNumber" class="form-control" placeholder="Phone Number" ngModel required>
+        <input type="number" [(ngModel)]="companyPhoneNumber"  name="companyPhoneNumber" class="form-control" >
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <input type="text" name="companyEmail" class="form-control" placeholder="Email Address" ngModel required>
+        <input type="text" [(ngModel)]="companyEmail" name="companyEmail" class="form-control">
       </div>
         <div class="col-7">
-          <input type="text" name="companyAddress" class="form-control" placeholder="Physical Address" ngModel required>
+          <input type="text" [(ngModel)]="companyAddress" name="companyAddress" class="form-control" >
         </div>
     </div>
     <div class="row">
       <div class="col">
-        <input type="text" name="directors" class="form-control" placeholder="Directors(s)" ngModel required>
+        <input type="text" [(ngModel)]="directors" name="directors" class="form-control"  required>
       </div>
       <div class="row">
+
         <div class="md-form">
           <select placeholder="Choose your option" label="Example label" ngModel required name="isWinner">
             <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
           </select>
         </div>
+
+
+
       </div>
     </div>
     <div class="row">
@@ -51,9 +55,3 @@
       </div>
     </div>
   </form>
-
-
-
-</div>
-
-

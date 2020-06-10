@@ -13,13 +13,13 @@ import { Router } from '@angular/router';
 })
 export class AddcompanyComponent implements OnInit {
   companies: Company[];
+  options = [
+    { value: 'isWinner', label: 'YES - Is Winner' },
+    { value: 'notWinner', label: 'NO - Not Winner' },
+  ];
+  isWinner: any;
   constructor(private tenderService: TenderService, private router: Router) {
-    // to validate tender number
-    // this.tenderService.getTenders().subscribe(tenderData => {
-    //   this.tenders = tenderData;
-    //   const result = this.tenders.find( ({ tenderNumber }) => tenderNumber === '4334/114/46744' );
-    //   console.log('MY RESULT IS ', result);
-    // });
+            this.isWinner = this.options;
   }
 
 
